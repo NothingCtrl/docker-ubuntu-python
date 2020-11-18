@@ -33,11 +33,13 @@ RUN apt-get -qq -y update && \
         bash-completion \
         tree \
         vim \
-		nano \
-		iputils-ping \
+        nano \
+        iputils-ping \
         software-properties-common \
-		dnsutils
-
+        dnsutils \
+        postgresql-client \
+        mysql-client
+		
 # python 
 RUN add-apt-repository ppa:deadsnakes/ppa -y
 RUN apt-get update && apt-get -y install python3.8 python3-pip
