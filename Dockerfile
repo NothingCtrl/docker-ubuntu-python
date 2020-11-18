@@ -35,11 +35,12 @@ RUN apt-get -qq -y update && \
         vim \
 		nano \
 		iputils-ping \
-        software-properties-common 
+        software-properties-common \
+		dnsutils
 
 # python 
 RUN add-apt-repository ppa:deadsnakes/ppa -y
-RUN apt-get update && apt-get -y install python3.8
+RUN apt-get update && apt-get -y install python3.8 python3-pip
 
 # Use C.UTF-8 locale to avoid issues with ASCII encoding
 ENV LC_ALL=C.UTF-8
