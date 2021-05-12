@@ -38,8 +38,12 @@ RUN apt-get -qq -y update && \
         software-properties-common \
         dnsutils \
         postgresql-client \
-        mysql-client
-		
+        mysql-client \
+		p7zip-full \
+		cron
+
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.0-amd64.deb && dpkg -i filebeat-7.12.0-amd64.deb
+
 # python 
 RUN add-apt-repository ppa:deadsnakes/ppa -y
 RUN apt-get update && apt-get -y install python3.8 python3-pip
@@ -48,5 +52,7 @@ RUN apt-get update && apt-get -y install python3.8 python3-pip
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
+ADD start.sh /
+RUN chmod +x /start.sh
 
-CMD tail -f /dev/null
+CMD ["/start.sh"]
